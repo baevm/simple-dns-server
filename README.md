@@ -1,5 +1,5 @@
 # simple-dns-server
-
+[![Test python application](https://github.com/dezzerlol/simple-dns-server/actions/workflows/app.yml/badge.svg)](https://github.com/dezzerlol/simple-dns-server/actions/workflows/app.yml)
 
 # Запуск
 1. Клонирование репозитория
