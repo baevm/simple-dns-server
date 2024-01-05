@@ -28,14 +28,14 @@ def main():
     resolver_args: str = args.resolver
 
     print("Resolver:", resolver_args)
-
     if resolver_args:
         resolver_ip_port = resolver_args.split(":")
         resolver_ip = resolver_ip_port[0]
         resolver_port = int(resolver_ip_port[1]) if len(resolver_ip_port) > 1 else 53
 
+    print("Starting server on 0.0.0.0:2053")
     udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    udp_socket.bind(("127.0.0.1", 2053))
+    udp_socket.bind(("0.0.0.0", 2053))
 
     while True:
         try:

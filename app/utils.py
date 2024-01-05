@@ -1,7 +1,7 @@
 import struct
 
 
-# codecrafters.io => b"\x0ccodecrafters\x02io\x00"
+# yandex.com => b"\x06yandex\x03com\x00"
 def marshal_domain_to_bytes(name: str) -> bytes:
     parts = name.split(".")
 
@@ -16,7 +16,7 @@ def marshal_domain_to_bytes(name: str) -> bytes:
     return result
 
 
-# b"\x0ccodecrafters\x02io\x00" => codecrafters.io
+# b"\x06yandex\x03com\x00" => yandex.com
 def unmarshal_bytes_to_domain(byte_string: bytes) -> str:
     result = ""
     i = 0

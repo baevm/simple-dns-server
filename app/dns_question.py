@@ -9,6 +9,7 @@ from app.utils import marshal_domain_to_bytes, parse_domain
 class DNSQuestion:
     def __init__(self, QNAME: bytes, QTYPE: int, QCLASS: int):
         # Domain name
+        # TODO: use string instead of bytes 
         self.QNAME: bytes = QNAME
         # https://www.rfc-editor.org/rfc/rfc1035#section-3.2.2
         self.QTYPE: int = QTYPE

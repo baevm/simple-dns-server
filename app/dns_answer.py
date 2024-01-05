@@ -17,27 +17,27 @@ class DNSAnswer:
         RDATA: str,
     ):
         # domain name
+        # TODO: use string instead of bytes
         self.ANAME = ANAME
         # https://www.rfc-editor.org/rfc/rfc1035#section-3.2.2
-        self.ATYPE = ATYPE.to_bytes(2, byteorder="big")
+        self.ATYPE = ATYPE
         # https://www.rfc-editor.org/rfc/rfc1035#section-3.2.4
-        self.ACLASS = ACLASS.to_bytes(2, byteorder="big")
+        self.ACLASS = ACLASS
         # cache time for record
-        self.TTL = TTL.to_bytes(4, byteorder="big")
+        self.TTL = TTL
         # length of RDATA
-        self.RDLENGTH = RDLENGTH.to_bytes(2, byteorder="big")
+        self.RDLENGTH = RDLENGTH
         # IP address
-        self.RDATA = ip_to_bytes(RDATA)
+        self.RDATA = RDATA
 
     def pack(self) -> bytes:
-        answer = (
-            self.ANAME
-            + self.ATYPE
-            + self.ACLASS
-            + self.TTL
-            + self.RDLENGTH
-            + self.RDATA
-        )
+        ATYPE = self.ATYPE.to_bytes(2, byteorder="big")
+        ACLASS = self.ACLASS.to_bytes(2, byteorder="big")
+        TTL = self.TTL.to_bytes(4, byteorder="big")
+        RDLENGTH = self.RDLENGTH.to_bytes(2, byteorder="big")
+        RDATA = ip_to_bytes(self.RDATA)
+
+        answer = self.ANAME + ATYPE + ACLASS + TTL + RDLENGTH + RDATA
 
         return answer
 
